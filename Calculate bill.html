@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Bill</title>
+    <!--Bootstrap link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @media print{
+            body *{
+                visibility: hidden;
+            }
+            #displayItem *{
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">                    
+                    <div class="col-md-5">
+                        <label for="itemname">Product Name</label>
+                        <select name="item_name" id="item_name" class="form-control">
+
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="itemname">Quantity</label>
+                        <select name="qty" id="qty" class="form-control">
+                    
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary mt-4" onclick="addItem()">Add</button>
+                    </div>
+                </div>
+                <table class="table table-bordered table-hover" id="displayItem">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfoot>
+                        <th colspan="3">Total Amount</th>
+                        <th id="total"></th>
+                    </tfoot>
+                </table>
+                <button class="btn btn-primary" onclick="window.print()">Generate PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Calculatebill.js"></script>
+</body>
+</html>
