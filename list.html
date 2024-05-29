@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Serif;
+            margin-top: 235px;
+            background-image: url("https://marketingaccesspass.com/wp-content/uploads/2015/10/Podcast-Website-Design-Background-Image.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            background-size: cover;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: none;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        }
+
+        
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            font-family: Serif;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color:green;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 40px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            padding: 10px;
+            background-color:white;
+            border-bottom: 2px solid black;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .delete-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("addTaskBtn").addEventListener("click", addTask);
+        document.getElementById("taskInput").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        });
+
+        function addTask() {
+            var input = document.getElementById("taskInput").value.trim();
+            if (input === '') {
+                alert("Please enter a task!");
+                return;
+            }
+            let ul = document.getElementById("taskList");
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode(input));
+
+            let deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "❌";
+            deleteButton.className = "delete-button";
+            deleteButton.onclick = function () {
+                ul.removeChild(li);
+            };
+            li.appendChild(deleteButton);
+
+            ul.appendChild(li);
+            document.getElementById("taskInput").value = '';
+        }
+    });
+</script>
+</body>
+</html>
